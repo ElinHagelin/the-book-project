@@ -56,24 +56,31 @@ function App() {
 
   return (
     <>
-      <h1>Boklistan</h1>
-      {bookList.length > 0 ? (
-        <ul>
-          {bookList.map(({ id, title, author }) => (
-            <li key={id}>
-              <h2>{title}</h2>
-              <h3>{author}</h3>
-              <button onClick={() => openModal('edit', id)}>Ändra boken</button>
-              <button onClick={() => removeBook(id)}>Ta bort boken</button>
-            </li>
-          ))}
-        </ul>
+      <img className='bookmark' src='../public/images/yellow-bookmark-clipart-md.png'></img>
 
-      )
-        : (
-          <p>Boklistan är tom</p>
-        )}
-      <button onClick={() => openModal('new', newId)}>Lägg till en bok</button>
+      <div className='main'>
+        <h1>Boklistan</h1>
+        <img className='book-divider' src="../public/images/43075.jpg" alt="book-divider" />
+        {bookList.length > 0 ? (
+          <ul>
+            {bookList.map(({ id, title, author }) => (
+              <li key={id} className='book-container'>
+                {/* <img src="../public/images/vecteezy_torn-paper-vintage-sticker-with-space-area_12805631_471.png" alt="" /> */}
+                <h2>{title}</h2>
+                <h3>{author}</h3>
+                <button className='button' onClick={() => openModal('edit', id)}>Ändra boken</button>
+                <button className='button' onClick={() => removeBook(id)}>Ta bort boken</button>
+              </li>
+            ))}
+          </ul>
+
+        )
+          : (
+            <p>Boklistan är tom</p>
+          )}
+        <button className='button add-button' onClick={() => openModal('new', newId)}>Lägg till en bok</button>
+
+      </div>
 
 
 
