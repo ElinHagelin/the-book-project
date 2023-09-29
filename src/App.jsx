@@ -56,20 +56,31 @@ function App() {
 
   return (
     <>
-      <img className='bookmark' src='../public/images/yellow-bookmark-clipart-md.png'></img>
+      <img className='bookmark' src='../public/images/pngwing.com (2).png'></img>
 
       <div className='main'>
-        <h1>Boklistan</h1>
-        <img className='book-divider' src="../public/images/43075.jpg" alt="book-divider" />
+        <div className='heading'>
+          <h1>Boklistan</h1>
+          <img className='book-divider' src="../public/images/43075.jpg" alt="book-divider" />
+        </div>
+
         {bookList.length > 0 ? (
           <ul>
             {bookList.map(({ id, title, author }) => (
               <li key={id} className='book-container'>
                 {/* <img src="../public/images/vecteezy_torn-paper-vintage-sticker-with-space-area_12805631_471.png" alt="" /> */}
-                <h2>{title}</h2>
-                <h3>{author}</h3>
-                <button className='button' onClick={() => openModal('edit', id)}>Ändra boken</button>
-                <button className='button' onClick={() => removeBook(id)}>Ta bort boken</button>
+                <div className='book-info'>
+                  <h2>{title}</h2>
+                  <h3>{author}</h3>
+                </div>
+                <div className='book-buttons'>
+                  <button className='button edit-button' onClick={() => openModal('edit', id)}>
+                    <img src='../public/images/—Pngtree—black quill feather pen with_5157648.png' alt='ändra boken' className='button-icon edit-icon'></img></button>
+
+                  <button className='button delete-button' onClick={() => removeBook(id)}>
+                    <img src='../public/images/trash-can.png' alt='ändra boken' className='button-icon delete-icon'></img>
+                  </button>
+                </div>
               </li>
             ))}
           </ul>
