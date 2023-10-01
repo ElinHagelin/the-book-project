@@ -36,6 +36,13 @@ function App() {
     modal.current.showModal()
   }
 
+  function closeModal() {
+    setBookID(null)
+    setTitleInput('')
+    setAuthorInput('')
+    modal.current.close()
+  }
+
   async function saveBook() {
     console.log('Spara boken');
     await addBook(bookID, titleInput, authorInput)
@@ -56,31 +63,33 @@ function App() {
 
   return (
     <>
-      <img className='bookmark' src='../public/images/pngwing.com (2).png'></img>
+      <img className='bookmark' src='../public/images/pngwing.com (2).png' alt='bokmärke'></img>
 
       <div className='main'>
         <div className='heading'>
           <h1>Boklistan</h1>
-          <img className='book-divider' src="../public/images/43075.jpg" alt="book-divider" />
+          <img className='book-divider' src="../public/images/43075.jpg" alt="bok-avdelare" />
         </div>
 
         {bookList.length > 0 ? (
           <ul>
             {bookList.map(({ id, title, author }) => (
               <li key={id} className='book-container'>
-                {/* <img src="../public/images/vecteezy_torn-paper-vintage-sticker-with-space-area_12805631_471.png" alt="" /> */}
+
                 <div className='book-info'>
                   <h2>{title}</h2>
                   <h3>{author}</h3>
                 </div>
+
                 <div className='book-buttons'>
                   <button className='button edit-button' onClick={() => openModal('edit', id)}>
-                    <img src='../public/images/—Pngtree—black quill feather pen with_5157648.png' alt='ändra boken' className='button-icon edit-icon'></img></button>
+                    <img src='../public/images/—Pngtree—black quill feather pen with_5157648.png' alt='ändra' className='button-icon edit-icon'></img></button>
 
                   <button className='button delete-button' onClick={() => removeBook(id)}>
-                    <img src='../public/images/trash-can.png' alt='ändra boken' className='button-icon delete-icon'></img>
+                    <img src='../public/images/trash-can.png' alt='ta bort' className='button-icon delete-icon'></img>
                   </button>
                 </div>
+
               </li>
             ))}
           </ul>
@@ -109,13 +118,21 @@ function App() {
             modal.current.close();
           }
         }}>
-        <h4>{newBook ? 'Lägg till en ny bok i listan' : 'Ändra boken i listan'}</h4>
-        <label htmlFor="title-input">Boktitel</label>
-        <input type="text" id='title-input' value={titleInput} onChange={(e) => setTitleInput(e.target.value)} />
-        <label htmlFor="author-input">Författare</label>
-        <input type="text" id='author-input' value={authorInput} onChange={(e) => setAuthorInput(e.target.value)} />
-        <button onClick={() => saveBook()}>Spara</button>
-        <button onClick={() => { modal.current.close() }}>Stäng</button>
+
+        <div className='modal-content'>
+          <h4>{newBook ? 'Lägg till en ny bok i listan' : 'Ändra boken i listan'}</h4>
+
+          <label htmlFor="title-input">Boktitel</label>
+          <input type="text" id='title-input' value={titleInput} onChange={(e) => setTitleInput(e.target.value)} />
+          <label htmlFor="author-input">Författare</label>
+          <input type="text" id='author-input' value={authorInput} onChange={(e) => setAuthorInput(e.target.value)} />
+
+          <div className='button-div'>
+            <button onClick={() => saveBook()}>Spara</button>
+            <button onClick={() => closeModal()}>Stäng</button>
+          </div>
+
+        </div>
       </dialog>
 
 
