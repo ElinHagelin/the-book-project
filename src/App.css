@@ -57,9 +57,9 @@ ul {
 	border-radius: 0.5em;
 	padding: 0.3em 0.5em;
 	margin: 0.3em;
-	/* border: 2px solid rgb(228, 201, 64); */
 	border: none;
 	box-shadow: 0.3em 0.3em 0.5em grey;
+	transition: all 0.2s;
 }
 
 .delete-button,
@@ -82,6 +82,14 @@ ul {
 .add-button {
 	margin-top: 2em;
 	padding: 0.8em 1.1em;
+	font-size: 0.8em;
+	font-weight: bold;
+}
+
+.modal {
+	position: absolute;
+	left: calc(50% - 8em);
+	top: calc(50% - 8em);
 }
 
 .modal-content {

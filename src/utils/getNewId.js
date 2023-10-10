@@ -6,7 +6,7 @@ function getNewId(bookList) {
 		const numberID = Number(id)
 		bookIDs.push(numberID)
 	})
-	console.log('bookIDs är: ', bookIDs);
+
 	let highestID = 0;
 
 	// Loopa igenom arrayen
@@ -20,7 +20,7 @@ function getNewId(bookList) {
 	}
 
 	// Nu kommer 'highestNumber' att innehålla den högsta siffran i arrayen
-	console.log('Högsta id:t är:', highestID);
+
 	return String(highestID + 1)
 }
 

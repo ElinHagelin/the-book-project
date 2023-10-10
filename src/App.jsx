@@ -44,7 +44,7 @@ function App() {
   }
 
   async function saveBook() {
-    console.log('Spara boken');
+
     await addBook(bookID, titleInput, authorInput)
     setBookID(null)
     setTitleInput('')
@@ -59,7 +59,7 @@ function App() {
   }
 
   const newId = getNewId(bookList)
-  console.log('newId är: ', newId);
+
 
   return (
     <>
